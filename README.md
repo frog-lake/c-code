@@ -1,2 +1,2 @@
 # c-code
-a repo to dump c code into
+a repo for me to dump c code into
