@@ -4,3 +4,13 @@
 #include <math.h>
 #include <string.h>
 --> useful
+
+sprintf(target_string, "%s", source_int);
+--> i have no idea how i used this tbh
+--> but can be used like itoa() but more verbose (i might be wrong)
+
+strcat(target_str, source_str);
+--> appends source_str to target_str
+
+void function(int *var)
+--> good to use global variables w/ them
