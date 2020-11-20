@@ -58,7 +58,7 @@ int count_numbers(int args[], int argc)
             return 0;
         }
     }
-    printf("evens: %d\nodds: %d\nprimes: %d\n", evens, odds, primes);
+    printf("Number of odd numbers: %d Number of even numbers: %d Number of prime numbers: %d\n", odds, evens, primes);
     return 0;
 }
 
