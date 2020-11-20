@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 // a program to take in numbers from the command line
 // and output how many evens, odds and primes there are
-// perhaps far too messy for it's purpose, but hey, it works :P
 
 int count_numbers(int args[], int argc);
 int check_prime(int num);
@@ -11,12 +12,35 @@ int check_prime(int num);
 
 int main(int argc, char *argv[])
 {
-    // convert numbers to ints through a loop
+    
     int i, numbers[argc];
+    
+    if(argc < 2){
+        printf("insufficient command line arguments.\n");
+        return 0;
+    }
+    
+    // for checking if there are letters in argv
+    char c[1000];
+    sprintf(c, "%s", argv[1]);
+    for(i = 2; i < argc; i++){
+        strcat(c, argv[i]);
+    }
+    // checks for letters
+    char *p = c;
+    for (i = 0; i < strlen(p); i++){
+        if(isalpha(p[i]) != 0){
+            printf("Error: only numbers are permitted.\n");
+            return 0;
+        }
+    }
+
+    // convert numbers to ints
     for(i = 1; i < (argc); i++)
     {
         numbers[i] = atoi(argv[i]);
     }
+
     count_numbers(numbers, argc);
 }
 
@@ -24,7 +48,7 @@ int main(int argc, char *argv[])
 // will print evens, odds, and primes or an error if there are negatives
 int count_numbers(int args[], int argc)
 {
-    int odds, evens, primes = 0;
+    int odds = 0, evens = 0, primes = 0;
     int i, p;
 
     for(i = 1; i < argc; i++)
@@ -54,11 +78,11 @@ int count_numbers(int args[], int argc)
             }
         }
         else{
-            printf("error: negative numbers are not permitted.\n");
+            printf("Error: Only positive integers are permitted.\n");
             return 0;
         }
     }
-    printf("Number of odd numbers: %d Number of even numbers: %d Number of prime numbers: %d\n", odds, evens, primes);
+    printf("Number of odd numbers: %d\nNumber of even numbers: %d\nNumber of prime numbers: %d\n", odds, evens, primes);
     return 0;
 }
 
