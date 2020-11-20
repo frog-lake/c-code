@@ -1,2 +1,6 @@
 #include <stdbool.h>
 --> for true and false
+
+#include <math.h>
+#include <string.h>
+--> useful
