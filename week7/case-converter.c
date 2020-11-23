@@ -4,41 +4,38 @@
 
 /*
 
-has a bunch of warnings that i'm not arsed to fix atm
-it works at the very least :P
+program to convert lowercase letters to uppercase and vice versa, using a void 
+function to convert the letters
 
 */
-
-// ----------------------
 
 // flag for invalid characters (numbers)
 int flag = 0;
 
-void convert(char *s[]);
+void convert(char s[]);
 
 int main() {
     int i;
     char str[100];
 
     // take in input from user
-    printf("Enter a string of upper and lowercase letters: ");
-    scanf("%s", &str);
+    printf("Enter a string of upper and lower case letters\n");
+    scanf("%s", str);
 
-    
-    convert(&str);
-    
+    convert(str);
+
     // if the flag was raised, throw an error
     // else, print as normal
     if(flag == 1)
         printf("Invalid character entered.\n");
     else{
-        printf("%s", str);
+        printf("%s\n", str);
     }
     return 0;
 }
 
 
-void convert(char *s[])
+void convert(char s[])
 {
     int i = 0;
     char *n = s;
@@ -54,11 +51,10 @@ void convert(char *s[])
         i++;
    }
 
-   // raise flag if any numbers are encountered
-    for (i = 0; n[i]!='\0'; i++) {
-        if(isdigit(n[i]) != 0){
+   // raise flag if any invalid characters are encountered
+    for (i = 0; n[i] != '\0'; i++) {
+        if(isalpha(n[i]) == 0){
             flag = 1;
         }
     }
-    
 }
