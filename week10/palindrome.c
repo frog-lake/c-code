@@ -60,18 +60,17 @@ void if_palindrome(char *ptr)
     }
 }
 
-
 int main()
 {
     // get input
-    char str[MAX_STRING_SIZE];
-    printf("Please enter a string:\n");
+    char *str = (char*) malloc(100 * sizeof(char));
+    printf("Please enter a string:  \n");
     fgets(str, MAX_STRING_SIZE, stdin);
     string = str;
 
     // check for digits
     checker(string);
-    if(valid_flag == 1){printf("Invalid!!\n");return 0;}
+    if(valid_flag == 1){printf("Invalid input: Numbers not permitted.\n");return 0;}
     
     // scrub and test input
     cleaner(string, string);
